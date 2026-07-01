@@ -145,10 +145,11 @@ log_info "开始第9步：激活python虚拟环境"
 python3 -m venv /opt/venv
 echo 'source /opt/venv/bin/activate' >> /etc/profile
 source /opt/venv/bin/activate
-log_info "添加青龙面板python package目录到python虚拟环境的package中 使其可以加载页面安装的依赖"
-location=$(pip show pip | grep Location | awk '{print $2}')
-new_location=$(echo "$location" | sed 's|/opt/venv/|/ql/data/dep_cache/python3/|')
-echo "$new_location" > $location/dep_cache.pth
+
+#log_info "添加青龙面板python package目录到python虚拟环境的package中 使其可以加载页面安装的依赖"
+#location=$(pip show pip | grep Location | awk '{print $2}')
+#new_location=$(echo "$location" | sed 's|/opt/venv/|/ql/data/dep_cache/python3/|')
+#echo "$new_location" > $location/dep_cache.pth
 
 log_info "正在进入Python虚拟环境..."
 /bin/zsh  <(echo "source /opt/venv/bin/activate; echo -e '${GREEN}已进入Python虚拟环境${NC}'")
